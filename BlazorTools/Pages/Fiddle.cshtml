@@ -1,0 +1,47 @@
+﻿@page "/fiddle"
+
+<h1>C# fiddle</h1>
+
+<div class="row">
+    <div class="col-md-6">
+        <textarea id="rawC" class="full-parent" bind="@RawString"></textarea>
+    </div>
+
+    <div id="resultC" class="col-md-6">
+        <div id="result">
+            @resultC
+        </div>
+    </div>
+</div>
+
+
+
+@functions {
+    string _rawString = "";
+    public string RawString {
+        get {
+            return _rawString;
+        }
+        set {
+            _rawString = value;
+            //var task = ProcessScript();
+            //task.RunSynchronously();
+        }
+    }
+    string resultC = "";
+
+    //async Task ProcessScript()
+    //{
+    //    if (!string.IsNullOrEmpty(_rawString))
+    //    {
+    //        var script = Microsoft.CodeAnalysis.CSharp.Scripting.CSharpScript.Create<object>("X*Y");
+    //        script.Compile();
+
+    //        resultC = (await script.RunAsync()).ReturnValue.ToString();
+    //        if (!string.IsNullOrEmpty(resultC))
+    //        {
+    //            Microsoft.AspNetCore.Blazor.Browser.Interop.RegisteredFunction.Invoke<bool>("RawHtml", "result", resultC);
+    //        }
+    //    }
+    //}
+}

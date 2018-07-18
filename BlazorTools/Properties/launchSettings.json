@@ -15,7 +15,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "TestBlazor": {
+    "BlazorTools": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {
