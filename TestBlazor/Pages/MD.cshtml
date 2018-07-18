@@ -1,0 +1,44 @@
+﻿@page "/markdown"
+
+<h1>Markdown editor</h1>
+
+<div class="row">
+    <div class="col-md-6">
+        <textarea id="rawMD" class="full-parent" bind="@RawString"></textarea>
+    </div>
+
+    <div id="parsedMD" class="col-md-6">
+        <div id="markdown">
+            @htmlParsed
+        </div>
+    </div>
+</div>
+
+
+
+@functions {
+    string _rawString = "";
+    public string RawString {
+        get {
+            return _rawString;
+        }
+        set {
+            _rawString = value;
+            ProcessMarkdown();
+        }
+    }
+    string htmlParsed = "";
+
+    void ProcessMarkdown()
+    {
+        if (!string.IsNullOrEmpty(_rawString))
+        {
+            var result = CommonMark.CommonMarkConverter.Convert(_rawString);
+            htmlParsed = result.ToString();
+            if (!string.IsNullOrEmpty(htmlParsed))
+            {
+                Microsoft.AspNetCore.Blazor.Browser.Interop.RegisteredFunction.Invoke<bool>("RawHtml", "markdown", htmlParsed);
+            }
+        }
+    }
+}

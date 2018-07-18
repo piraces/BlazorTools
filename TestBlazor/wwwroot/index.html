@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width">
+    <title>Blazor tools</title>
+    <base href="/" />
+    <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/site.css" rel="stylesheet" />
+</head>
+<body>
+    <app>Loading...</app>
+
+    <script type="blazor-boot">
+    </script>
+    <script>
+        Blazor.registerFunction('RawHtml', function (elementID, value) {
+            element = document.getElementById(elementID);
+            element.innerHTML = value;
+            return true;
+        });
+    </script>
+</body>
+</html>
